@@ -1,7 +1,16 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
 function cn(...args: any) {
   return clsx(...args);
+}
+
+function ingfy(obj: any) {
+  if (!obj) return '';
+  return JSON.stringify(obj);
+}
+function join(ch: string, ...args: any) {
+  if (!args?.length) return '';
+  return args.join(ch);
 }
 
 function preloadImages(imageUrls: string[]): Promise<void> {
@@ -29,6 +38,8 @@ function preloadImages(imageUrls: string[]): Promise<void> {
 const Helper = {
   cn,
   preloadImages,
+  join,
+  ingfy,
 };
 
 export default Helper;

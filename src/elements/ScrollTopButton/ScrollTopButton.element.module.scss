@@ -1,0 +1,34 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  cursor: pointer;
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  border-radius: theme.$border_radius_full;
+  background-color: theme.$primary_main;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  isolation: isolate;
+  z-index: theme.$z_index_modal;
+  opacity: 0;
+  transition-duration: 300ms;
+  transition-property: transform, opacity;
+  transition-timing-function: linear;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.icon {
+  color: theme.$accent_main;
+}
+
+.view {
+  opacity: 0.7;
+}

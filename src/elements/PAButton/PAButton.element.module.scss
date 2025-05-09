@@ -1,0 +1,49 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.button {
+  isolation: isolate;
+  padding: theme.$spacing_sm;
+  padding-inline: 2rem;
+  font-size: theme.$font_size_xs;
+  font-weight: normal;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  border-radius: theme.$border_radius_md;
+
+  &:active {
+    background-color: #00c4ad;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.ripple {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  .button:hover & {
+    width: 225%;
+    height: 562.5px;
+  }
+}

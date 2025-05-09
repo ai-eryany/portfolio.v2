@@ -1,0 +1,16 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  padding-inline: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding-bottom: 2rem;
+  line-height: 0.9;
+  color: theme.$primary_main;
+  font-size: theme.$font_size_xl;
+}

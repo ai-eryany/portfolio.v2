@@ -1,0 +1,41 @@
+// TitleCard.module.scss
+@use '/src/shared/styles/theme.scss' as theme;
+
+.wrapper {
+  position: relative;
+  padding: theme.$spacing_md;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    background-color: theme.$neutral-white;
+    animation-name: afterFrames;
+    animation-duration: theme.$transition-medium;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+  }
+}
+
+.title {
+  width: min-content;
+  text-align: center;
+  word-spacing: 100vw;
+  overflow: hidden;
+  text-transform: uppercase;
+  color: theme.$neutral-white;
+}
+
+@keyframes afterFrames {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}

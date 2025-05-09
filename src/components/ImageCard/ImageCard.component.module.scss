@@ -1,0 +1,23 @@
+@use '/src/shared/styles/theme.scss' as theme;
+@use '/src/shared/styles/break-points.scss' as bp;
+
+.base {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 35rem;
+  min-height: 30rem;
+  box-shadow: theme.$box_shadow_lg;
+  border-radius: theme.$border_radius_sm;
+  overflow: hidden;
+}
+
+@include bp.tablet {
+  .base {
+    max-width: 45rem;
+    padding: theme.$spacing_md;
+  }
+}

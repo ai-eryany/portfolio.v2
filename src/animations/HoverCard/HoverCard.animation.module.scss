@@ -1,0 +1,122 @@
+@use '/src/shared/styles/theme.scss' as theme;
+@use '/src/shared/styles/break-points.scss' as bp;
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: theme.$neutral_white;
+  padding: theme.$spacing_xl theme.$spacing_md theme.$spacing_lg;
+  box-shadow: theme.$box_shadow_xl;
+  transition: all theme.$transition_medium;
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: theme.$box_shadow_2xl;
+  }
+
+  @include bp.tablet {
+    margin: 0 auto;
+    max-width: theme.$wrapper;
+    border-radius: theme.$border_radius_lg;
+    padding: theme.$spacing_xl;
+  }
+}
+
+.circleBackground {
+  position: absolute;
+  top: theme.$spacing_xl;
+  z-index: 0;
+  height: 5rem;
+  width: 5rem;
+  border-radius: theme.$border_radius_full;
+  background-color: theme.$primary_main;
+  transition: all theme.$transition_medium;
+
+  .card:hover & {
+    transform: scale(10);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: theme.$z_index_dropdown;
+  margin: 0 auto;
+  max-width: 72rem; // Adjust based on your content needs
+}
+
+.iconWrapper {
+  display: grid;
+  height: 5rem;
+  width: 5rem;
+  place-items: center;
+  border-radius: theme.$border_radius_full;
+  background-color: theme.$primary_main;
+  transition: background-color theme.$transition_medium;
+
+  .card:hover & {
+    background-color: theme.$primary_light;
+  }
+}
+
+.icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: none;
+  stroke: theme.$neutral_white;
+  stroke-width: 1.5;
+  transition: all theme.$transition_medium;
+  color: theme.$secondary_main;
+
+  &:visited,
+  &:active {
+    color: theme.$secondary_main;
+  }
+}
+
+.textContent {
+  margin-top: theme.$spacing_md;
+  color: theme.$neutral_600;
+  transition: color theme.$transition_medium;
+
+  .card:hover & {
+    color: rgba(theme.$secondary_main, 0.9);
+  }
+}
+
+.description {
+  font-size: theme.$font_size_sm;
+  line-height: 1.75;
+  font-family: theme.$font_family_nunito;
+}
+
+.linkContainer {
+  margin-top: theme.$spacing_md;
+  font-size: theme.$font_size_sm;
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.link {
+  color: theme.$primary_main;
+  transition: color theme.$transition_medium;
+  font-family: theme.$font_family_exo2;
+
+  .card:hover & {
+    color: theme.$neutral_white;
+  }
+}
+
+// Ultra-wide specific styles
+@include bp.ultraWide {
+  .card {
+    max-width: theme.$wrapper;
+  }
+}

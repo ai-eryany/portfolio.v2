@@ -1,0 +1,61 @@
+.base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--accent-9);
+  gap: 2rem;
+}
+
+.h1 {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 0 0.1rem var(--accent-9));
+}
+
+.span1 {
+  font-size: calc(var(--font-size-xl) + max(2vw, 5rem));
+  color: var(--accent-9);
+}
+
+.span2 {
+  font-size: calc(var(--font-size-xl) + max(2vw, 5rem));
+  color: var(--accent-9);
+}
+
+.p1 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: var(--font-size-md);
+  animation-name: blurFadeDown;
+  animation-duration: var(--transition-md);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+  animation-delay: 700ms;
+}
+
+.p2 {
+  margin: auto;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  animation-name: blurFadeDown;
+  animation-duration: var(--transition-md);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+  animation-delay: 700ms;
+  font-size: var(--font-size-sm);
+}
+
+@keyframes blurFadeDown {
+  from {
+    filter: blur(5px);
+  }
+  to {
+    filter: blur(0);
+  }
+}

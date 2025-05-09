@@ -1,0 +1,6 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  color: theme.$secondary_main;
+  display: inline-block;
+}

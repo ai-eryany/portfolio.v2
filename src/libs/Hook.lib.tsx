@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { animate } from 'motion/react';
 import { nanoid } from 'nanoid';
 import { useLocation } from 'react-router-dom';
-import * as R from 'ramda';
+import Store from './Store.lib';
+import Constants from '@/Constants';
+import useSWR, { mutate } from 'swr';
+import Api from '@/Api';
+import type { Maybe } from '@/types/shared.type';
 
 function useAnimateDelay(delay: number) {
   const [isAbleToAnimate, setIsAbleToAnimate] = useState(false);
@@ -74,13 +78,13 @@ function useHeaderController() {
 }
 
 function useNavbarDeps() {
-  // const isHeaderVisible = useHeader((s) => s.isHeaderVisible);
-  // const isMobileListActive = useNavbar((s) => s.isNavbarActive);
-  // const setIsMobileListActive = useNavbar((s) => s.setIsNavbarActive);
+  const isHeaderVisible = Store.useTheme((s) => s.isHeaderVisible);
+  const isMobileListActive = Store.useTheme((s) => s.isNavbarActive);
+  const setIsMobileListActive = Store.useTheme((s) => s.setIsNavbarActive);
   const [ref] = useState(nanoid());
 
   const handleClosing = () => {
-    // setIsMobileListActive(false);
+    setIsMobileListActive(false);
   };
 
   const handlePrevention = (e: Event) => e.preventDefault();
@@ -92,65 +96,17 @@ function useNavbarDeps() {
     return () => navbarBg?.removeEventListener('touchmove', handlePrevention);
   }, [ref]);
 
-  // return { isHeaderVisible, isMobileListActive, handleClosing, ref };
-}
-
-function usePathname() {
-  const { pathname } = useLocation();
-  // const [isHome, setIsHome] = useState(R.equals(pathname, objects?.home?.url));
-  const [isAbout, setIsAbout] =
-    useState();
-    // R.equals(pathname, objects?.about_us?.url)
-  const [isContact, setIsContact] =
-    useState();
-    // R.equals(pathname, objects?.contact_us?.url)
-  const [isNotFound, setIsNotFound] =
-    useState();
-    // R.equals(pathname, objects?.["*"]?.url)
-
-  const switchToHome = () => {
-    // setIsHome(true);
-    // setIsAbout(false);
-    // setIsContact(false);
-    // setIsNotFound(false);
-  };
-
-  const switchToAbout = () => {
-    // setIsHome(false);
-    // setIsAbout(true);
-    // setIsContact(false);
-    // setIsNotFound(false);
-  };
-
-  const switchToContact = () => {
-    // setIsHome(false);
-    // setIsAbout(false);
-    // setIsContact(true);
-    // setIsNotFound(false);
-  };
-
-  const switchToNotFound = () => {
-    // setIsHome(false);
-    // setIsAbout(false);
-    // setIsContact(false);
-    // setIsNotFound(true);
-  };
-
-  useEffect(() => {
-    // if (R.equals(pathname, objects?.home?.url)) switchToHome();
-    // else if (R.equals(pathname, objects?.about_us?.url)) switchToAbout();
-    // else if (R.equals(pathname, objects?.contact_us?.url)) switchToContact();
-    // else if (R.equals(pathname, objects?.["*"]?.url)) switchToNotFound();
-  }, [pathname]);
-
-  // return { isHome, isAbout, isContact, isNotFound };
+  return { isHeaderVisible, isMobileListActive, handleClosing, ref };
 }
 
 function usePathNormalizer() {
   const { pathname } = useLocation();
   useEffect(() => {
-    // const normalizedPaths = [objects?.home_alt?.url, objects?.home_alt2?.url];
-    // if (normalizedPaths.includes(pathname)) window.location.href = "/";
+    const normalizedPaths = [
+      Constants.routes.public.homeAlt.url,
+      Constants.routes.public.homeAlt2.url,
+    ];
+    if (normalizedPaths.includes(pathname)) window.location.href = '/';
   }, [pathname]);
 
   return null;
@@ -186,16 +142,73 @@ function useWindowScrolling() {
   return null;
 }
 
+type UseRequestProps = {
+  method: Maybe<'GET' | 'POST' | 'PUT' | 'DELETE'>;
+  url: Maybe<string>;
+  payload: Maybe<any>;
+  isSubmit: Maybe<boolean>;
+};
+
+function useRequest(props: UseRequestProps) {
+  const { method, url, payload, isSubmit } = props;
+
+  const isGet = method?.toUpperCase() === 'GET';
+  const {
+    data,
+    error,
+    mutate: localMutate,
+    isLoading,
+  } = useSWR(isGet && isSubmit ? url : null);
+
+  const trigger = async (newPayload: any) => {
+    try {
+      const response = await Api.client.request({
+        url: url || '',
+        method: method || '',
+        data: newPayload ?? payload,
+      });
+
+      // Always revalidate the path after successful write
+      mutate(url);
+
+      return response.data;
+    } catch (e) {
+      const err = e as Error;
+      console.error('Request failed:', err.message);
+      return null;
+    }
+  };
+
+  return {
+    data: data ?? [],
+    error,
+    isLoading,
+    mutate: localMutate,
+    trigger,
+  };
+}
+
+function useDisclosure(initial = false) {
+  const [isOpen, setIsOpen] = useState(initial);
+
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen((state) => !state), []);
+
+  return { isOpen, open, close, toggle };
+}
+
 const Hook = {
   useAnimateDelay,
   useAnimatedText,
   useHeaderController,
   useNavbarDeps,
-  usePathname,
   usePathNormalizer,
   useScroll,
   useWindow,
   useWindowScrolling,
+  useDisclosure,
+  useRequest,
 };
 
 export default Hook;

@@ -1,54 +1,28 @@
-# React + TypeScript + Vite
+# Welcome to the codebase of my Portfolio V2..
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The codebase is getting big, I have gathered all this in 4 hours from my old projects, everything is mixed, still working on it.
 
-Currently, two official plugins are available:
+### You can find the code like this:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
 ```
+portfolio/
+    └── src/
+        ├── animations/ (All the animations are here)
+        ├── components/ (All High-level-shared components are here)
+        ├── elements/ (All small-level-shared elements are here )
+        ├── features/ (Features based architecture with use cases)
+        ├── layouts/ (All shared Layouts are here)
+        ├── libs/ (Shared Modules)
+        ├── pages/ (Public & Private pages)
+        ├── routers/ (Public Router & Private Router)
+        ├── styles/ (All styles are here)
+        ├── types/ (All shared types are here)
+        ├── Api.ts (A single Api function)
+        ├── App.tsx (A single App skeleton shared between Private & Public)
+        ├── Config.ts (Application Config)
+        ├── Constants.ts (All Constants)
+        ├── Handler.tsx (Error Handler for the big boom)
+        ├── main.tsx (entry point)
+        └── Providers.tsx (Application Wrappers like theme, helmet, toast etc)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```

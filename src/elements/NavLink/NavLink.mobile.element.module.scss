@@ -1,0 +1,5 @@
+@use '/src/shared/styles/theme.scss' as theme;
+.base {
+  padding: 1px;
+  color: theme.$primary_contrast_text;
+}

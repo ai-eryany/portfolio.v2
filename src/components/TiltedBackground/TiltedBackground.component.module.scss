@@ -1,0 +1,82 @@
+.base {
+  position: relative;
+  padding-block: 10rem;
+  margin-block: 10rem;
+  height: fit-content;
+  transform: skewY(-7deg);
+  overflow: hidden;
+}
+
+.short {
+  width: 15rem;
+  height: 4rem;
+  position: absolute;
+  right: 8rem;
+  top: -3rem;
+  opacity: 0.9;
+}
+
+.short2 {
+  width: 15rem;
+  height: 4rem;
+  position: absolute;
+  left: 8rem;
+  bottom: -3rem;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+.tall {
+  width: 30%;
+  height: 4rem;
+  position: absolute;
+  top: -4rem;
+  left: -100%;
+}
+
+.tallAnimate {
+  animation-duration: 1500ms;
+  animation-name: leftToRight;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+}
+
+.tall2 {
+  width: 30%;
+  height: 4rem;
+  position: absolute;
+  right: -100%;
+  bottom: -4rem;
+}
+
+.tall2Animate {
+  animation-duration: 1500ms;
+  animation-name: rightToLeft;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+}
+
+.content {
+  transform: skewY(7deg);
+  position: relative;
+}
+
+@keyframes leftToRight {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes rightToLeft {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}

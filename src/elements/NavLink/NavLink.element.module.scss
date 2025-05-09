@@ -1,0 +1,39 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  position: relative;
+  display: flex;
+  color: theme.$primary_contrast_text;
+  transition-duration: theme.$transition_medium;
+  outline: 0 solid theme.$primary_main;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  border-radius: 5px;
+  transition-timing-function: linear;
+
+  &:hover {
+    color: theme.$primary_main;
+    outline-width: 1px;
+    &::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    left: 50%;
+    bottom: -0.5rem;
+    transform: translate(-50%, 0);
+    transition-property: opacity, width;
+    transition-timing-function: ease-out;
+    opacity: 0;
+    border-bottom: 1px solid theme.$primary_main;
+    transition-duration: theme.$transition_medium;
+  }
+}

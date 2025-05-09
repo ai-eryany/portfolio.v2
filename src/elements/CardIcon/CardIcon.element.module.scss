@@ -1,0 +1,44 @@
+@use '/src/shared/styles/theme.scss' as theme;
+.base {
+  position: relative;
+  max-width: 40rem;
+  min-height: 50rem;
+  box-shadow: theme.$box_shadow_lg;
+  border-radius: theme.$border_radius_md;
+}
+
+.upper {
+  padding: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  width: min-content;
+  text-align: center;
+  word-spacing: 100vw;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.iconWrapper {
+  padding: theme.$spacing_sm;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: theme.$accent_light;
+}
+
+.lower {
+  position: relative;
+  padding: 2rem;
+}
+
+.text {
+  position: relative;
+  font-size: theme.$font_size_sm;
+}

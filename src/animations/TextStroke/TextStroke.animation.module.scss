@@ -1,0 +1,89 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.middleStroke {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  opacity: 0;
+}
+
+.middleStrokeInView {
+  animation-name: showAfterAbyess;
+  animation-timing-function: linear;
+  animation-duration: 300ms;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+.leftStroke {
+  display: flex;
+  flex: 2;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+  transition-property: all;
+  transition-duration: 300ms;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-radius: 5px;
+  }
+}
+
+.rightStroke {
+  display: flex;
+  flex: 2;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  transition-property: all;
+  transition-duration: 300ms;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-radius: 5px;
+  }
+}
+
+.strokeInView {
+  &::after {
+    border-color: var(--after-bg);
+    animation-name: growTextStrokeAnimation;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-delay: 300ms;
+  }
+}
+
+@keyframes growTextStrokeAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes showAfterAbyess {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

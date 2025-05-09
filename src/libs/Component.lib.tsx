@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
-import type { Props } from "@/types/shared.type";
+import { useEffect, useState } from 'react';
+import type { Maybe, Props } from '@/types/shared.type';
+import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+import Store from './Store.lib';
 
 type P = {
   Loader: React.ElementType;
@@ -7,7 +10,7 @@ type P = {
   objToPreload: any;
 };
 
-function PreLoadGate(props: Props<"div", P>) {
+function PreLoadGate(props: Props<'div', P>) {
   const { children, Loader, preloadFn, objToPreload } = props;
   const [isReady, setIsReady] = useState(false);
 
@@ -27,8 +30,36 @@ function PreLoadGate(props: Props<"div", P>) {
   return isReady ? <>{children}</> : <Loader />;
 }
 
+type SeoProps = {
+  title: Maybe<string>;
+  pageTitle: Maybe<string>;
+  description: Maybe<string>;
+};
+
+function Seo(props: Props<'div', SeoProps>) {
+  const { title, pageTitle, description } = props;
+  const setTitle = Store.useApp((s) => s.setTitle);
+  const setPageTitle = Store.useApp((s) => s.setPageTitle);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTitle(title);
+    setPageTitle(pageTitle);
+  }, [setTitle, setPageTitle, pathname, title, pageTitle]);
+  return (
+    <Helmet
+      prioritizeSeoTags
+      title={title ? `${title} | ai-eryany` : 'ai-eryany'}
+      defaultTitle="Aiman Al Eryany"
+    >
+      <meta name="description" content={description || ''} />
+    </Helmet>
+  );
+}
+
 const Component = {
   PreLoadGate,
+  Seo,
 };
 
 export default Component;

@@ -1,0 +1,24 @@
+.base {
+  position: fixed;
+  isolation: isolate;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7rem;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 300ms;
+  transition-property: all;
+  background-color: var(--gray-9);
+  color: black;
+}
+
+.visible {
+  transform: translateY(0);
+}
+
+.notVisible {
+  transform: translateY(-100%);
+}

@@ -1,0 +1,14 @@
+@use '/src/shared/styles/theme.scss' as theme;
+
+.base {
+  position: absolute;
+  width: 0;
+  border-bottom: 3px solid theme.$primary_main;
+  border-radius: 5px;
+  transition-duration: 1000ms;
+  transition-timing-function: ease-out;
+}
+
+.inView {
+  width: 96%;
+}
