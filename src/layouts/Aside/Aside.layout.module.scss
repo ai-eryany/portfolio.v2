@@ -3,9 +3,11 @@
 .base {
   display: none;
   isolation: isolate;
-  position: fixed;
+  position: absolute;
+  background-color: var(--accent-10);
+  padding-inline: 1.5rem;
+  height: 100%;
   left: 0;
-  top: 35%;
   flex-direction: column;
   z-index: 100;
 }

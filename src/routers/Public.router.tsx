@@ -38,6 +38,11 @@ const hobbiesPage: RouteObject = {
   element: <Page.Public.Hobbies />,
 };
 
+const loginPage: RouteObject = {
+  path: Constants.routes.public.login.url,
+  element: <Page.Public.Login />,
+};
+
 const notFoundPage: RouteObject = {
   path: Constants.routes.public.notFound.url,
   element: <Page.Public.NotFound />,
@@ -59,6 +64,7 @@ const publicRoute: RouteObject = {
     projectsPage,
     blogsPage,
     hobbiesPage,
+    loginPage,
     notFoundPage,
     testPage,
   ],

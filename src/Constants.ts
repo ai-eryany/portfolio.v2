@@ -41,6 +41,9 @@ const routes = {
     hobbies: {
       url: '/hobbies',
     },
+    login: {
+      url: '/login',
+    },
     notFound: {
       url: '/*',
     },

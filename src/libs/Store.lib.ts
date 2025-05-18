@@ -21,6 +21,10 @@ const useApp = create<UseAppType>((set) => ({
 
   dir: 'ltr',
   setDir: (dir) => set(() => ({ dir })),
+
+  isUnderConstruction: true,
+  setIsUnderConstruction: (isUnderConstruction) =>
+    set(() => ({ isUnderConstruction })),
 }));
 
 const useTheme = create<UseThemeType>((set) => ({

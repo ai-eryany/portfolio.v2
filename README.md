@@ -1,8 +1,54 @@
 # Welcome to the codebase of my Portfolio V2..
 
-## The codebase is getting big, I have gathered all this in 4 hours from my old projects, everything is mixed, still working on it.
+# Table of Contents
 
-### You can find the code like this:
+1. [Introduction](#1-introduction)
+
+   - [Welcome Message](#welcome-message)
+   - [Quick Links](#quick-links)
+
+2. [Documentation](#2-documentation)
+
+   - [Architecture Overview](#architecture-overview)
+   - [Tech Stack](#tech-stack)
+   - [Setup & Installation](#setup--installation)
+
+3. [Why doing it this Way?](#3-why-doing-it-this-way)
+
+   - [Goals & Philosophy](#goals--philosophy)
+   - [Benefits of This Style](#benefits-of-this-style)
+   - [Use Cases](#use-cases)
+
+4. [Features](#4-features)
+
+   - [Core Functionality](#core-functionality)
+   - [Advanced Capabilities](#advanced-capabilities)
+   - [Roadmap](#roadmap)
+
+5. [About the Developer](#5-about-the-developer)
+   - [Background & Expertise](#background--expertise)
+   - [Projects & Achievements](#projects--achievements)
+   - [Contact Info](#contact-info)
+
+## 1. Introduction
+
+- Still Working on it
+
+### Welcome Message
+
+- Still Working on it
+
+### Quick Links
+
+- Still Working on it
+
+## 2. Documentation
+
+### Architecture Overview
+
+- Still Working on it
+
+- File Structure
 
 ```
 portfolio/
@@ -26,3 +72,53 @@ portfolio/
         └── Providers.tsx (Application Wrappers like theme, helmet, toast etc)
 
 ```
+
+### Tech Stack
+
+- Still Working on it
+
+### Setup & Installation
+
+- Still Working on it
+
+## 3. Why doing it this Way?
+
+### Goals & Philosophy
+
+- Still Working on it
+
+### Benefits of This Style
+
+- Still Working on it
+
+### Use cases
+
+- Still Working on it
+
+## 4. Features
+
+### Core Functionality
+
+- Still Working on it
+
+### Advanced Capabilities
+
+- Still Working on it
+
+### Roadmap
+
+- Still Working on it
+
+## 5. About the Developer
+
+### Background & Expertise
+
+- Still Working on it
+
+### Projects & Achievements
+
+- Still Working on it
+
+### Contact Info
+
+- Still Working on it

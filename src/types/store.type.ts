@@ -12,6 +12,9 @@ export type UseAppType = {
 
   dir: Maybe<'ltr' | 'rtl'>;
   setDir: (dir: Maybe<'ltr' | 'rtl'>) => void;
+
+  isUnderConstruction: Maybe<boolean>;
+  setIsUnderConstruction: (isUnderConstruction: Maybe<boolean>) => void;
 };
 
 export type UseUserType = {
