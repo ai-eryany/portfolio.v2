@@ -1,14 +1,14 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { Props } from '@/shared/types';
-import { clx } from '@/shared/utils';
+import type { Props } from '@/types/shared.type';
+import Helper from '@/libs/Helper.lib';
 import styles from './RotateText.animation.module.scss';
 
 type P = {
   words: string[];
 };
 
-export default function RotateTextAnimation(props: Props<'div', P>) {
+export default function RotateText(props: Props<'div', P>) {
   const { className, words = [] } = props;
   const [index, setIndex] = useState(0);
 
@@ -24,7 +24,7 @@ export default function RotateTextAnimation(props: Props<'div', P>) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        className={clx(styles.base, className)}
+        className={Helper.cn(styles.base, className)}
         key={words[index]}
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}

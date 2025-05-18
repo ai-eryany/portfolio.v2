@@ -1,6 +1,6 @@
 import Helper from '@/libs/Helper.lib';
 import type { Props } from '@/types/shared.type';
-import styles from './Puzzle.module.scss';
+import styles from './Puzzle.animation.module.scss';
 
 export default function Puzzle(props: Props<'div'>) {
   const { className } = props;

@@ -1,7 +1,7 @@
 import { motion, useMotionTemplate, useMotionValue } from 'motion/react';
-import { Props } from '@/shared/types';
+import Helper from '@/libs/Helper.lib';
+import type { Props } from '@/types/shared.type';
 import styles from './SpotLightCard.animation.module.scss';
-import { clx } from '@/shared/utils';
 
 type P = {
   smallTitle: string;
@@ -9,7 +9,7 @@ type P = {
   desc: string;
 };
 
-export default function SpotLightCardAnimation(props: Props<'div', P>) {
+export default function SpotLightCard(props: Props<'div', P>) {
   const { className } = props;
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -23,9 +23,12 @@ export default function SpotLightCardAnimation(props: Props<'div', P>) {
   }
 
   return (
-    <div onMouseMove={handleMouseMove} className={clx(styles.base, className)}>
+    <div
+      onMouseMove={handleMouseMove}
+      className={Helper.cn(styles.base, className)}
+    >
       <motion.div
-        className={clx(styles.spotLight)}
+        className={Helper.cn(styles.spotLight)}
         style={{
           background: useMotionTemplate`
                         radial-gradient(
@@ -37,11 +40,11 @@ export default function SpotLightCardAnimation(props: Props<'div', P>) {
         }}
       />
       <div>
-        <div className={clx(styles.smallTitle)}>{props.smallTitle}</div>
-        <div className={clx(styles.bigTitleWrapper)}>
-          <div className={clx(styles.bigTitle)}>{props.bigTitle}</div>
+        <div className={Helper.cn(styles.smallTitle)}>{props.smallTitle}</div>
+        <div className={Helper.cn(styles.bigTitleWrapper)}>
+          <div className={Helper.cn(styles.bigTitle)}>{props.bigTitle}</div>
         </div>
-        <div className={clx(styles.description)}>{props.desc}</div>
+        <div className={Helper.cn(styles.description)}>{props.desc}</div>
       </div>
     </div>
   );

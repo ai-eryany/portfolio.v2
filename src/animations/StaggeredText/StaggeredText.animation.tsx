@@ -1,13 +1,13 @@
 import { motion } from 'motion/react';
-import { Props } from '@/shared/types';
-import { clx } from '@/shared/utils';
+import Helper from '@/libs/Helper.lib';
+import type { Props } from '@/types/shared.type';
 import styles from './StaggeredText.animation.module.scss';
 
 type P = {
   words: string;
 };
 
-export default function StaggeredTextAnimation(props: Props<'div', P>) {
+export default function StaggeredText(props: Props<'div', P>) {
   const { className, words = '' } = props;
   const letters = words.split('');
 
@@ -23,7 +23,7 @@ export default function StaggeredTextAnimation(props: Props<'div', P>) {
   };
 
   return (
-    <div className={clx(styles.base, className)}>
+    <div className={Helper.cn(styles.base, className)}>
       {letters.map((letter, i) => (
         <motion.p
           key={i}
@@ -31,7 +31,7 @@ export default function StaggeredTextAnimation(props: Props<'div', P>) {
           initial="initial"
           animate="animate"
           custom={i}
-          className={clx(styles.text)}
+          className={Helper.cn(styles.text)}
         >
           {letter === ' ' ? <span>&nbsp;</span> : letter}
         </motion.p>

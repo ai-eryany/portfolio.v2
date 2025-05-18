@@ -1,6 +1,6 @@
 import FadeIn from './FadeIn/FadeIn';
-import Page from './Page/Page';
-import Puzzle from './Puzzle/Puzzle';
+import Page from './Page/Page.animation';
+import Puzzle from './Puzzle/Puzzle.animation';
 
 const Animation = {
   FadeIn,

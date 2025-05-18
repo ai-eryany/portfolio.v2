@@ -1,7 +1,7 @@
 import Helper from '@/libs/Helper.lib';
 import UnderConstructionLayout from './UnderConstruction.layout';
 import styles from './UnderConstruction.page.module.scss';
-import { Box, Flex, Heading } from '@radix-ui/themes';
+import { Box, Heading } from '@radix-ui/themes';
 
 export default function UnderConstruction() {
   return (
