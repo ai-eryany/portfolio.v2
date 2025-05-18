@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import legacy from "@vitejs/plugin-legacy";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import legacy from '@vitejs/plugin-legacy';
 
 interface ViteConfigInput {
   mode: string;
@@ -10,25 +10,24 @@ interface ViteConfigInput {
 
 function viteConfig(args: ViteConfigInput) {
   // Production mode
-  if (args.mode === "production")
+  if (args.mode === 'production')
     return defineConfig({
       plugins: [
         react(),
         tsconfigPaths(),
         legacy({
-          targets: ["defaults", "not IE 11"],
+          targets: ['defaults', 'not IE 11'],
         }),
       ],
       css: {
         modules: {
-          localsConvention: "camelCase",
-          generateScopedName: "[hash:base64:5]",
+          localsConvention: 'camelCase',
+          generateScopedName: '[hash:base64:5]',
         },
       },
       build: {
-        minify: "esbuild",
+        minify: 'esbuild',
         cssMinify: true,
-        outDir: "../hrtc-built",
         emptyOutDir: true, // also necessary
         rollupOptions: {
           output: {
