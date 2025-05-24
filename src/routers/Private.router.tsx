@@ -16,8 +16,8 @@ const dashboardPage: RouteObject = {
 };
 
 const notFoundPage: RouteObject = {
-  path: Constants.routes.private.notFound.url,
-  element: <Page.Private.NotFound />,
+  path: Constants.routes.public.notFound.url,
+  element: <Page.Public.NotFound />,
 };
 
 const privateRoute: RouteObject = {

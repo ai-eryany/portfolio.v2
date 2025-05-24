@@ -4,18 +4,21 @@ import { Outlet } from 'react-router-dom';
 import Store from './libs/Store.lib';
 import Hook from './libs/Hook.lib';
 import UnderConstruction from './UnderConstruction/UnderConstruction.page';
-import { Heading } from '@radix-ui/themes';
-import Helper from './libs/Helper.lib';
+import { Helmet } from 'react-helmet-async';
 
 export default function App() {
   const isAuthenticated = Store.useUser((s) => s.isAuthenticated);
   const isUnderConstruction = Store.useApp((s) => s.isUnderConstruction);
+  const theme = Store.useTheme((s) => s.theme);
 
   Hook.usePathNormalizer();
   Hook.useScroll();
 
   return (
     <>
+      <Helmet>
+        <html data-theme={theme} />
+      </Helmet>
       <Switch>
         <Case condition={isUnderConstruction}>
           <UnderConstruction />
@@ -26,18 +29,12 @@ export default function App() {
         </Case>
         <Default>
           <Layout.Header>
-            <Layout.Navbar>
-              <Heading as="h1" className={Helper.cn()}>
-                NavBar
-              </Heading>
-            </Layout.Navbar>
+            <Layout.Navbar>NavBar</Layout.Navbar>
           </Layout.Header>
           <Layout.Main>
             <Outlet />
           </Layout.Main>
-          <Layout.Footer>
-            <Heading as="h1"> Footer </Heading>
-          </Layout.Footer>
+          <Layout.Footer>Footer</Layout.Footer>
         </Default>
       </Switch>
     </>

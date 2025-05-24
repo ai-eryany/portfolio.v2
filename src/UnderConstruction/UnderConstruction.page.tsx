@@ -1,7 +1,6 @@
 import Helper from '@/libs/Helper.lib';
 import UnderConstructionLayout from './UnderConstruction.layout';
 import styles from './UnderConstruction.page.module.scss';
-import { Box, Heading } from '@radix-ui/themes';
 
 export default function UnderConstruction() {
   return (
@@ -19,9 +18,9 @@ export default function UnderConstruction() {
           <li></li>
           <li></li>
         </ul>
-        <Box className={Helper.cn(styles.titleBox)}>
-          <Heading as="h1">Page is Under Construction</Heading>
-        </Box>
+        <div className={Helper.cn(styles.titleBox)}>
+          <h1>Page is Under Construction</h1>
+        </div>
       </div>
     </UnderConstructionLayout>
   );

@@ -22,14 +22,14 @@ const useApp = create<UseAppType>((set) => ({
   dir: 'ltr',
   setDir: (dir) => set(() => ({ dir })),
 
-  isUnderConstruction: true,
+  isUnderConstruction: false,
   setIsUnderConstruction: (isUnderConstruction) =>
     set(() => ({ isUnderConstruction })),
 }));
 
 const useTheme = create<UseThemeType>((set) => ({
-  isDark: false,
-  setIsDark: (b) => set(() => ({ isDark: b })),
+  theme: '',
+  setTheme: (theme) => set(() => ({ theme })),
 
   isHeaderVisible: false,
   setIsHeaderVisible: (b) => set(() => ({ isHeaderVisible: b })),

@@ -6,12 +6,6 @@ const routes = {
     dashboard: {
       url: '/dashboard',
     },
-    notFound: {
-      url: '/*',
-    },
-    test: {
-      url: '/test',
-    },
   },
   public: {
     home: {

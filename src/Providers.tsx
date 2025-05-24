@@ -2,13 +2,11 @@ import { Slide, ToastContainer as ToastProvider } from 'react-toastify';
 import { StrictMode } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { RouterProvider } from 'react-router-dom';
-import { Theme as ThemeProvider } from '@radix-ui/themes';
 import { SWRConfig } from 'swr';
 import Store from './libs/Store.lib';
 import { Case, Default, Switch } from 'react-if';
 import PrivateRouter from './routers/Private.router';
 import PublicRouter from './routers/Public.router';
-import Helper from './libs/Helper.lib';
 import Api from './Api';
 
 export default function Providers() {
@@ -38,22 +36,14 @@ export default function Providers() {
             }}
             transition={Slide}
           />
-          <ThemeProvider
-            appearance={isDark ? 'dark' : 'light'}
-            scaling="100%"
-            radius="medium"
-            accentColor="yellow"
-            className={Helper.cn('theme')}
-          >
-            <Switch>
-              <Case condition={isAuthenticated}>
-                <RouterProvider router={PrivateRouter} />
-              </Case>
-              <Default>
-                <RouterProvider router={PublicRouter} />
-              </Default>
-            </Switch>
-          </ThemeProvider>
+          <Switch>
+            <Case condition={isAuthenticated}>
+              <RouterProvider router={PrivateRouter} />
+            </Case>
+            <Default>
+              <RouterProvider router={PublicRouter} />
+            </Default>
+          </Switch>
         </SWRConfig>
       </HelmetProvider>
     </StrictMode>

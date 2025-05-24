@@ -26,8 +26,8 @@ export type UseUserType = {
 };
 
 export type UseThemeType = {
-  isDark: Maybe<boolean>;
-  setIsDark: (b: Maybe<boolean>) => void;
+  theme: Maybe<string>;
+  setTheme: (theme: Maybe<string>) => void;
 
   isHeaderVisible: Maybe<boolean>;
   setIsHeaderVisible: (b: Maybe<boolean>) => void;

@@ -1,17 +1,11 @@
-import axios from 'axios';
+import type { Maybe } from './types/shared.type';
 
-export const client = axios.create({
-  baseURL: '',
-  timeout: 3000,
-});
-
-async function fetcher(url: string) {
-  return client.get(url).then((res) => res.data);
+async function fetcher(url: Maybe<string>) {
+  return url;
 }
 
 const Api = {
   fetcher,
-  client,
 };
 
 export default Api;

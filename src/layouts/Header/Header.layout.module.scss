@@ -1,6 +1,6 @@
 .base {
-  position: fixed;
   isolation: isolate;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -11,8 +11,6 @@
   align-items: center;
   transition-duration: 300ms;
   transition-property: all;
-  background-color: var(--gray-9);
-  color: black;
 }
 
 .visible {
